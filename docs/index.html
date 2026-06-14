@@ -20,25 +20,43 @@
     }
     .hero h1 { font-size: 36px; margin-bottom: 8px; }
     .hero p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+    .download-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
     .download-btn {
       display: inline-block;
-      background: white;
-      color: #0066cc;
+      background: rgba(255,255,255,0.15);
+      color: white;
       padding: 12px 32px;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .download-btn.primary {
+      background: white;
+      color: #0066cc;
+      border-color: white;
     }
     .download-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.25);
+    }
+    .download-btn.primary:hover {
+      background: #f0f4ff;
     }
     .download-btn .size {
+      display: block;
       font-weight: 400;
-      font-size: 13px;
-      opacity: 0.7;
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 2px;
     }
     .container {
       max-width: 720px;
@@ -83,10 +101,16 @@
   <div class="hero">
     <h1>📦 软件管理器</h1>
     <p>Windows 系统软件管理工具 — 查看已安装软件及其磁盘足迹</p>
-    <a class="download-btn" href="https://github.com/Alin2077/software-manager/releases/latest/download/software-manager.exe">
-      ⬇ 下载 Windows 版
-      <span class="size">~4.8 MB</span>
-    </a>
+    <div class="download-buttons">
+      <a class="download-btn primary" href="https://github.com/Alin2077/software-manager/releases/latest/download/software-manager-setup.exe">
+        ⬇ 下载安装版
+        <span class="size">推荐 · 含开始菜单快捷方式和卸载程序</span>
+      </a>
+      <a class="download-btn" href="https://github.com/Alin2077/software-manager/releases/latest/download/software-manager.exe">
+        下载便携版
+        <span class="size">无需安装，直接运行</span>
+      </a>
+    </div>
   </div>
 
   <div class="container">
@@ -114,7 +138,7 @@
     </div>
 
     <div class="install-note">
-      ⚠️ <strong>注意：</strong>本工具为便携版，无需安装。下载后直接运行。首次运行时 Windows 可能会弹出 SmartScreen 警告，点击「更多信息」→「仍要运行」即可。
+      ⚠️ <strong>安装版 vs 便携版：</strong>安装版会创建开始菜单快捷方式和卸载程序，适合长期使用。便携版无需安装，下载即用。首次运行时 Windows 可能会弹出 SmartScreen 警告，点击「更多信息」→「仍要运行」即可。
     </div>
 
     <h2 style="margin-top: 32px; font-size: 18px;">从源码编译</h2>

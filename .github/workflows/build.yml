@@ -20,11 +20,24 @@ jobs:
       - name: Build release
         run: cargo build --release --manifest-path src-tauri/Cargo.toml
 
-      - name: Upload artifact
+      - name: Build NSIS installer
+        run: |
+          $version = git describe --tags --abbrev=0 2>$null
+          if (-not $version) { $version = "0.1.0" }
+          $version = $version -replace '^v', ''
+          makensis /DVERSION=$version installer/setup.nsi
+
+      - name: Upload portable
         uses: actions/upload-artifact@v4
         with:
-          name: software-manager
+          name: software-manager-portable
           path: src-tauri/target/release/software-manager.exe
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: software-manager-setup
+          path: installer/software-manager-setup.exe
 
   release:
     name: Create Release
@@ -36,10 +49,16 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: software-manager
+          name: software-manager-portable
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: software-manager-setup
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: software-manager.exe
+          files: |
+            software-manager.exe
+            software-manager-setup.exe
           generate_release_notes: true
