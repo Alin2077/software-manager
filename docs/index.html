@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>软件管理器 — Windows 软件管理工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+      color: white;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 36px; margin-bottom: 8px; }
+    .hero p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+    .download-btn {
+      display: inline-block;
+      background: white;
+      color: #0066cc;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .download-btn .size {
+      font-weight: 400;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .feature {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid #e0e0e0;
+    }
+    .feature .icon { font-size: 24px; margin-bottom: 8px; }
+    .feature h3 { font-size: 15px; margin-bottom: 4px; }
+    .feature p { font-size: 13px; color: #666; }
+    .install-note {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 24px;
+      font-size: 13px;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #999;
+    }
+    @media (max-width: 500px) {
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>📦 软件管理器</h1>
+    <p>Windows 系统软件管理工具 — 查看已安装软件及其磁盘足迹</p>
+    <a class="download-btn" href="https://github.com/Alin2077/software-manager/releases/latest/download/software-manager.exe">
+      ⬇ 下载 Windows 版
+      <span class="size">~4.8 MB</span>
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="features">
+      <div class="feature">
+        <div class="icon">📋</div>
+        <h3>软件列表</h3>
+        <p>从注册表读取所有已安装软件，显示名称、版本、发行商、安装位置</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📁</div>
+        <h3>文件树浏览</h3>
+        <p>查看每个软件的安装目录完整文件结构，含文件大小</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔗</div>
+        <h3>快捷方式追踪</h3>
+        <p>扫描开始菜单和桌面的 .lnk 文件，反向关联到软件</p>
+      </div>
+      <div class="feature">
+        <div class="icon">▶️</div>
+        <h3>卸载入口</h3>
+        <p>一键打开软件自带的卸载程序</p>
+      </div>
+    </div>
+
+    <div class="install-note">
+      ⚠️ <strong>注意：</strong>本工具为便携版，无需安装。下载后直接运行。首次运行时 Windows 可能会弹出 SmartScreen 警告，点击「更多信息」→「仍要运行」即可。
+    </div>
+
+    <h2 style="margin-top: 32px; font-size: 18px;">从源码编译</h2>
+    <pre style="background:#1a1a1a;color:#f0f0f0;padding:16px;border-radius:8px;font-size:13px;overflow-x:auto;">git clone git@github.com:Alin2077/software-manager.git
+cd software-manager
+cargo build --release --manifest-path src-tauri/Cargo.toml</pre>
+  </div>
+
+  <footer>
+    &copy; 2025 Alin2077 · Built with Rust + egui
+  </footer>
+</body>
+</html>
